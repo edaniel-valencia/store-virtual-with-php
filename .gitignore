@@ -1,0 +1,13 @@
+# Dependencias (se instalan con composer install en el servidor o se suben aparte por FTP)
+/vendor/
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs y backups locales
+*.log
+*.sql.bak
+router.php

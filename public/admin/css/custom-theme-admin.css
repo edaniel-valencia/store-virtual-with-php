@@ -1,0 +1,335 @@
+/*========================================================
+  Tema ADAVAM para el panel administrativo
+  Reutiliza la misma paleta que la tienda publica
+=========================================================*/
+
+:root {
+  --primary:       #6C3FE8;
+  --primary-dark:  #4A22C6;
+  --primary-light: #8B5CF6;
+  --accent:        #F97316;
+  --accent-hover:  #EA6804;
+  --success:       #10B981;
+  --danger:        #EF4444;
+  --warning:       #F59E0B;
+  --sidebar-bg:    #0A1628;
+  --sidebar-bg2:   #14112E;
+  --border-r-sm:   10px;
+  --border-r-md:   16px;
+  --shadow-soft:   0 4px 24px rgba(108,63,232,0.10);
+  --transition:    all 0.25s ease;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+  background-color: #F5F3FF;
+}
+
+/* ================= PRELOADER ================= */
+#preloader {
+  background: linear-gradient(135deg, var(--sidebar-bg2), var(--primary-dark));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+#preloader .admin-preloader__logo {
+  width: 140px;
+  max-width: 55vw;
+  height: auto;
+  animation: adminPreloaderPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes adminPreloaderPulse {
+  0%, 100% { opacity: 0.65; transform: scale(0.95); }
+  50%      { opacity: 1;    transform: scale(1.03); }
+}
+
+/* ================= SIDEBAR ================= */
+.left.side-menu,
+.side-menu {
+  background: linear-gradient(180deg, var(--sidebar-bg) 0%, var(--sidebar-bg2) 100%) !important;
+  border-right: none !important;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 16px;
+  border-bottom: 1px solid rgba(139,92,246,0.15);
+  margin-bottom: 10px;
+}
+
+.sidebar-brand img {
+  height: 46px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+#sidebar-menu .menu-title {
+  color: rgba(196,181,253,0.5) !important;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 20px 8px !important;
+}
+
+#sidebar-menu > ul > li > a {
+  color: rgba(255,255,255,0.8) !important;
+  background-color: transparent !important;
+  border-radius: 8px;
+  margin: 2px 12px;
+  width: auto !important;
+  transition: var(--transition);
+}
+
+#sidebar-menu > ul > li > a:hover,
+#sidebar-menu > ul > li > a.active,
+#sidebar-menu > ul > li.nav-active > a {
+  background: rgba(139,92,246,0.18) !important;
+  color: #fff !important;
+}
+
+#sidebar-menu ul ul {
+  background: rgba(0,0,0,0.15) !important;
+}
+
+#sidebar-menu > ul > li > a.active i,
+#sidebar-menu > ul > li > a:hover i {
+  color: var(--accent) !important;
+}
+
+#sidebar-menu ul ul a {
+  color: rgba(255,255,255,0.6) !important;
+  padding-left: 56px !important;
+}
+
+#sidebar-menu ul ul a:hover,
+#sidebar-menu ul ul li.active a {
+  color: #fff !important;
+  background: rgba(139,92,246,0.12) !important;
+}
+
+/* ================= TOPBAR ================= */
+.topbar {
+  background: #fff !important;
+  box-shadow: 0 2px 12px rgba(108,63,232,0.08);
+}
+
+.topbar-left {
+  background: var(--sidebar-bg) !important;
+}
+
+.topbar-left .logo img {
+  height: 34px !important;
+  width: auto;
+}
+
+.navbar-custom {
+  background: transparent !important;
+}
+
+.nav-user img.rounded-circle {
+  border: 2px solid var(--primary-light);
+}
+
+.nav-user .nav-link span {
+  color: var(--text-color) !important;
+}
+
+/* Toggle de tema en el topbar */
+.admin-theme-toggle {
+  background: rgba(108,63,232,0.08);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: var(--transition);
+  margin: 11px 8px 0 0;
+}
+
+.admin-theme-toggle:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ================= CARDS ================= */
+.card {
+  border: none !important;
+  border-radius: var(--border-r-md) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.page-title-box .page-title {
+  font-weight: 800;
+  color: #1E1B4B;
+}
+
+/* ================= BOTONES ================= */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light)) !important;
+  border: none !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary)) !important;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--success), #34d399) !important;
+  border: none !important;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--danger), #f87171) !important;
+  border: none !important;
+}
+
+.badge-warning { background: var(--warning) !important; }
+.badge-success { background: var(--success) !important; }
+
+/* ================= DATATABLES ================= */
+table.dataTable thead th {
+  background: #F0EDFF;
+  color: #1E1B4B;
+  border-bottom: none !important;
+  font-weight: 700;
+}
+
+table.dataTable.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(108,63,232,0.03);
+}
+
+table.dataTable tbody tr:hover {
+  background-color: rgba(108,63,232,0.07) !important;
+}
+
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+  border-radius: var(--border-r-sm);
+  border: 1.5px solid rgba(108,63,232,0.2);
+}
+
+.dataTables_wrapper .dt-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.dataTables_wrapper .dt-buttons .dt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 50px !important;
+  border: none;
+  color: #fff !important;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: none;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: max-content;
+}
+
+.dataTables_wrapper .dt-buttons .dt-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.16);
+  color: #fff !important;
+}
+
+.dt-btn-excel  { background: linear-gradient(135deg, #10B981, #34d399); }
+.dt-btn-pdf    { background: linear-gradient(135deg, #EF4444, #f87171); }
+.dt-btn-copy   { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+.dt-btn-print  { background: linear-gradient(135deg, #1E1B4B, #4B5563); }
+.dt-btn-csv    { background: linear-gradient(135deg, var(--accent), #FB923C); }
+
+.page-item.active .page-link {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.page-link {
+  color: var(--primary);
+}
+
+/* ================= TEMA OSCURO ================= */
+[data-theme="dark"] body {
+  background-color: #14112E !important;
+  color: #E5E1FA;
+}
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .topbar,
+[data-theme="dark"] .modal-content {
+  background-color: #1C1840 !important;
+  color: #E5E1FA;
+}
+
+[data-theme="dark"] .admin-user-name {
+  color: #fff !important;
+}
+[data-theme="dark"] .admin-user-email {
+  color: #aaa !important;
+}
+
+[data-theme="dark"] .page-title-box .page-title,
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3,
+[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6,
+[data-theme="dark"] label, [data-theme="dark"] p {
+  color: #E5E1FA !important;
+}
+
+[data-theme="dark"] table.dataTable thead th {
+  background: #241f4d;
+  color: #E5E1FA;
+}
+
+[data-theme="dark"] table.dataTable,
+[data-theme="dark"] table.dataTable td {
+  color: #E5E1FA !important;
+}
+
+[data-theme="dark"] table.dataTable.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255,255,255,0.03);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input[type="password"],
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: #241f4d !important;
+  color: #E5E1FA !important;
+  border-color: rgba(139,92,246,0.3) !important;
+}
+
+[data-theme="dark"] .dataTables_wrapper .dataTables_filter input,
+[data-theme="dark"] .dataTables_wrapper .dataTables_length select {
+  background-color: #241f4d;
+  color: #E5E1FA;
+  border-color: rgba(139,92,246,0.3);
+}
+
+[data-theme="dark"] .list-group-item {
+  background-color: #241f4d !important;
+  color: #E5E1FA !important;
+  border-color: rgba(139,92,246,0.2) !important;
+}
+
+[data-theme="dark"] .footer {
+  background: #0f0d2e !important;
+  color: rgba(255,255,255,0.6);
+}

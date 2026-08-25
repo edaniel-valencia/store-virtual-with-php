@@ -1,3 +1,8 @@
+<p align="right">
+  <a href="README.md">🇪🇸 Español</a> ·
+  <a href="README.en.md">🇬🇧 English</a>
+</p>
+
 <p align="center">
   <img src="public/img/logo-adavam.png" alt="ADAVAM" width="260">
 </p>
@@ -43,14 +48,33 @@ Antes de configurar el proyecto necesitas tener instalado:
 | [MySQL](https://www.mysql.com/) o MariaDB | 8.0+ | Base de datos |
 | [Composer](https://getcomposer.org/) | 2.x | Instala las dependencias PHP (`dompdf`, `phpmailer`) |
 
-En macOS, la forma más simple de instalar todo es con [Homebrew](https://brew.sh/):
+### Instalar en macOS
+
+La forma más simple es con [Homebrew](https://brew.sh/):
 
 ```bash
 brew install php mysql composer
 brew services start mysql
 ```
 
-En Windows/Linux, cualquier stack que traiga PHP + MySQL + Composer sirve igual (XAMPP, Laragon, WampServer, o instalarlos por separado).
+### Instalar en Windows
+
+Dos caminos, elige uno:
+
+**Opción A — Todo en uno (recomendado para empezar rápido):** instala [Laragon](https://laragon.org/) o [XAMPP](https://www.apachefriends.org/), que traen PHP + MySQL + Apache juntos, listos para usar. Con Apache ya incluido no necesitas el paso del `router.php` (ver más abajo): solo copia el proyecto dentro de `www/` (Laragon) o `htdocs/` (XAMPP).
+
+**Opción B — Instalar cada herramienta por separado:**
+1. PHP: descarga la versión "Thread Safe" desde [windows.php.net/download](https://windows.php.net/download/) y agrega la carpeta al `PATH`.
+2. MySQL: instala con el [MySQL Installer](https://dev.mysql.com/downloads/installer/) oficial.
+3. Composer: descarga e instala [Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe) (detecta tu PHP automáticamente).
+
+Verifica que todo quedó accesible desde la terminal (PowerShell o CMD):
+
+```powershell
+php -v
+mysql --version
+composer -V
+```
 
 ---
 
@@ -109,15 +133,28 @@ $_GET['url'] = ltrim($path, '/');
 require __DIR__ . '/index.php';
 ```
 
-Luego corre:
+Luego corre, según tu sistema operativo y terminal:
 
+**macOS / Linux (bash o zsh):**
 ```bash
 PHP_CLI_SERVER_WORKERS=4 php -S localhost:8000 router.php
 ```
 
+**Windows (PowerShell):**
+```powershell
+$env:PHP_CLI_SERVER_WORKERS=4
+php -S localhost:8000 router.php
+```
+
+**Windows (CMD):**
+```cmd
+set PHP_CLI_SERVER_WORKERS=4
+php -S localhost:8000 router.php
+```
+
 > El flag `PHP_CLI_SERVER_WORKERS=4` es importante: por defecto el servidor de PHP atiende **una sola petición a la vez**, así que generar un PDF (ticket de venta) dejaría todo el sitio congelado unos segundos para cualquiera que lo esté usando. Con 4 workers, el servidor atiende varias peticiones en paralelo.
 
-Si vas a usar **Apache** en su lugar (XAMPP, MAMP, hosting real), no necesitas `router.php`: solo pon el proyecto en el `htdocs`/`www` y el `.htaccess` ya incluido hace el trabajo.
+Si vas a usar **Apache** en su lugar (Laragon, XAMPP, MAMP, hosting real), no necesitas `router.php` ni el comando de arriba: solo pon el proyecto en el `htdocs`/`www` y el `.htaccess` ya incluido hace el trabajo.
 
 ### 5. Abrir el proyecto
 

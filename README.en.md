@@ -78,7 +78,7 @@ composer -V
 
 ---
 
-## Setting it up from scratch (Junior Dev guide)
+## Setting it up from scratch (Dev guide)
 
 ### 1. Clone the project and install dependencies
 
